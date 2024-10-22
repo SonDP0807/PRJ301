@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
             }
 
             AccountDAO aO = new AccountDAO();
-            if ("staff".equals(aO.getAccount(username, password))) {
+            if ("waiter".equals(aO.getAccount(username, password))) {
                 response.sendRedirect("tableID.jsp");
             } else if ("cashier".equals(aO.getAccount(username, password))) {
                 response.sendRedirect("cashier");
