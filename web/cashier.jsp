@@ -22,7 +22,7 @@
                         <c:set var="id" value="${i.id}"></c:set>
                         <c:set var="status" value="${i.status}"></c:set>
                             <div class="col-auto">
-                                <a href="table1.html" class="number-box">
+                                <a href="manage?tableID=${id}" class="number-box">
                                     <span>${id}</span>
                                 <c:choose>
                                     <c:when test="${status == 'available'}">
