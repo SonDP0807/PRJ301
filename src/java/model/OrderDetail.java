@@ -21,11 +21,12 @@ public class OrderDetail {
     private int price;
     private String status;
     private LocalDateTime orderTime;
+    private String orderStatus;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(int orderDetailId, int orderId, int tableId, int dishId, String dishName, int quantity, int price, String status, LocalDateTime orderTime) {
+    public OrderDetail(int orderDetailId, int orderId, int tableId, int dishId, String dishName, int quantity, int price, String status, LocalDateTime orderTime, String orderStatus) {
         this.orderDetailId = orderDetailId;
         this.orderId = orderId;
         this.tableId = tableId;
@@ -35,6 +36,7 @@ public class OrderDetail {
         this.price = price;
         this.status = status;
         this.orderTime = orderTime;
+        this.orderStatus = orderStatus;
     }
 
     public int getOrderDetailId() {
@@ -107,6 +109,14 @@ public class OrderDetail {
 
     public void setOrderTime(LocalDateTime orderTime) {
         this.orderTime = orderTime;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
 }

@@ -22,11 +22,12 @@ public class OrderDetailDAO extends DBContext {
     public List<OrderDetail> getOrderDetailsByTableId(int tableId) {
         List<OrderDetail> orderDetails = new ArrayList<>();
         String sql = """
-                     select od.OrderDetailID, od.OrderID, o.TableID, od.DishID, d.DishName, od.Quantity, od.Price, od.Status, o.OrderTime 
-                     from [Order] o 
-                     join OrderDetail od on o.OrderID = od.OrderID
-                     join Dish d on d.DishID = od.DishID
-                     where o.TableID =  ?
+                     select od.OrderDetailID, od.OrderID, o.TableID, od.DishID, 
+                     	    d.DishName, od.Quantity, od.Price, od.Status, o.OrderTime, o.OrderStatus
+                                          from [Order] o 
+                                          join OrderDetail od on o.OrderID = od.OrderID
+                                          join Dish d on d.DishID = od.DishID
+                                          where o.TableID =  ?
                      """;
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -43,7 +44,10 @@ public class OrderDetailDAO extends DBContext {
                 od.setPrice(rs.getInt("Price"));
                 od.setStatus(rs.getString("Status"));
                 od.setOrderTime(rs.getTimestamp("OrderTime").toLocalDateTime());
-                orderDetails.add(od);
+                od.setOrderStatus(rs.getString("OrderStatus"));
+                if ("Not Yet".equals(od.getOrderStatus())) {
+                    orderDetails.add(od);
+                }
             }
         } catch (SQLException e) {
             System.out.println(e);
