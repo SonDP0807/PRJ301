@@ -84,8 +84,7 @@
                         <div class="buttons">
                             <button type="submit" class="btn btn-danger">Submit</button>
                         </div>
-                        <c:set var="e" value="${requestScope.error}">
-                        </c:set>
+                        <c:set var="e" value="${requestScope.error}"></c:set>
                         <p style="color: red">${e}</p>
                     </form>
                 </div>

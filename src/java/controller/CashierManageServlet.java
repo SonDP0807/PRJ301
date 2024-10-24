@@ -84,7 +84,23 @@ public class CashierManageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String orderId_raw = request.getParameter("orderId");
+        String dishId_raw = request.getParameter("dishId");
+        String tableId_raw = request.getParameter("tableId");
+        int dishId, orderId, tableId;
+//        response.getWriter().print("<h1>" + dishId_raw + "</h1>");
+//        response.getWriter().print("<h1>" + orderId_raw + "</h1>");
+//        response.getWriter().print("<h1>" + tableId_raw + "</h1>");
+        try {
+            dishId = Integer.parseInt(dishId_raw);
+            orderId = Integer.parseInt(orderId_raw);
+            tableId = Integer.parseInt(tableId_raw);
+            OrderDetailDAO oddao = new OrderDetailDAO();
+            oddao.confirm(dishId, orderId);
+            response.sendRedirect("manage?tableID=" + tableId);
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
     }
 
     /**

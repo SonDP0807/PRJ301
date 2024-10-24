@@ -11,60 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/cashierManage.css"/>
         <title>JSP Page</title>
-        <style>
-            body {
-                background-color: #f7f9fc;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
-
-            h2 {
-                color: #343a40;
-                font-weight: bold;
-                letter-spacing: 2px;
-            }
-
-            .card {
-                border-radius: 10px;
-                overflow: hidden;
-            }
-
-            .table th, .table td {
-                vertical-align: middle;
-            }
-
-            .table th {
-                text-transform: uppercase;
-                letter-spacing: 1px;
-            }
-
-            .table-hover tbody tr:hover {
-                background-color: #e9ecef;
-            }
-
-            .card-footer h5 {
-                color: #28a745;
-            }
-
-            .btn-lg {
-                padding: 0.8rem 2rem;
-            }
-
-            .btn-outline-primary {
-                color: #007bff;
-                border-color: #007bff;
-            }
-
-            .btn-outline-primary:hover {
-                background-color: #007bff;
-                color: white;
-            }
-
-            a {
-                text-decoration: none;
-            }
-
-        </style>
     </head>
     <body>
         <div class="container mt-5">
@@ -88,7 +36,7 @@
                                         <th>Dish Name</th>
                                         <th>Quantity</th>
                                         <th>Price</th>
-                                        <td>Total Amount</td>
+                                        <th>Total Amount</th>
                                         <th>Status</th>
                                         <th>Confirm</th>
                                     </tr>
@@ -105,7 +53,16 @@
                                             <c:if test="${o.status == 'Served'}">
                                                 <c:set var="sum" value="${sum + (o.price * o.quantity)}" />
                                             </c:if>
-                                            <td><a href="#" class="btn btn-outline-primary">confirm</a></td>
+                                            <td>
+                                                <a class="btn btn-outline-primary"
+                                                   onclick="submitForm('manage?dishId=${o.dishId}&orderId=${o.orderId}&tableId=${param.tableID}', 'post')">Confirm</a>
+                                            </td>
+                                            <td>
+                                                <form id="myForm" method="post" style="display: none">
+                                                    <input type="text" name="orderId" value="${o.orderId}">
+                                                    <input type="text" name="dishId" value="${o.dishId}">
+                                                </form>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -121,12 +78,20 @@
             <div class="row mt-4">
                 <div class="col-md-12 text-center">
                     <a href="cashier" class="btn btn-outline-primary btn-lg">Back to Tables</a>
-                    <a href="cashier" class="btn btn-outline-primary btn-lg">Pay</a>
+                    <a href="#" class="btn btn-outline-primary btn-lg">Pay</a>
                 </div>
             </div>
         </div>
 
-        <!-- Include Bootstrap JS and jQuery -->
+        <script>
+            function submitForm(action, method) {
+                var form = document.getElementById('myForm');
+                form.action = action;
+                form.method = method;
+                form.submit();
+            }
+        </script>
+        
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>

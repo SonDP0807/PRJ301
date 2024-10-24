@@ -54,4 +54,20 @@ public class OrderDetailDAO extends DBContext {
         }
         return orderDetails;
     }
+
+    public void confirm(int dishId, int orderId) {
+        String sql = """
+                     update [OrderDetail]
+                     set Status = 'Served'
+                     where DishID = ? and OrderID = ?
+                     """;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, dishId);
+            st.setInt(2, orderId);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }
