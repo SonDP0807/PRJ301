@@ -4,7 +4,10 @@
  */
 package controller;
 
+import dal.BillDAO;
+import dal.OrderDAO;
 import dal.OrderDetailDAO;
+import dal.TableDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,14 +17,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Bill;
 import model.OrderDetail;
 
 /**
  *
  * @author ADMIN
  */
-@WebServlet(name = "CashierManageServlet", urlPatterns = {"/manage"})
-public class CashierManageServlet extends HttpServlet {
+@WebServlet(name = "PayServlet", urlPatterns = {"/pay"})
+public class PayServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +44,10 @@ public class CashierManageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CashierManageServlet</title>");
+            out.println("<title>Servlet PayServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CashierManageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PayServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,21 +65,50 @@ public class CashierManageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tableId_raw = request.getParameter("tableID");
-        int tableID;
-        try {
-            tableID = Integer.parseInt(tableId_raw);
+        HttpSession session = request.getSession();
+        List<OrderDetail> list = (List<OrderDetail>) session.getAttribute("orderList");
+        int totalAmount = 0;
+        if (list != null) {
+            BillDAO bdao = new BillDAO();
+            OrderDAO odao = new OrderDAO();
             OrderDetailDAO oddao = new OrderDetailDAO();
-            List<OrderDetail> list =  oddao.getOrderDetailsByTableId(tableID);
-            
-            HttpSession session = request.getSession();
-            session.setAttribute("orderList", list);
-            
-            request.setAttribute("list", list);
-            request.getRequestDispatcher("cashierManage.jsp").forward(request, response);
-        } catch (NumberFormatException e) {
-            System.out.println(e);
+            for (OrderDetail order : list) {
+                if ("Served".equals(order.getStatus())) {
+                    // Nếu trạng thái là "served", cộng vào tổng tiền
+                    totalAmount += order.getPrice() * order.getQuantity();
+                    Bill bill = new Bill(order.getTableId(),
+                            order.getDishId(),
+                            order.getQuantity(),
+                            order.getPrice()
+                    );
+                    bdao.inserToBill(bill);
+                    odao.setOrderStatus(order.getTableId());
+                } else {
+                    // Nếu trạng thái không phải "served", cập nhật thành "not served" trong database
+                    oddao.updateStatus(order.getDishId(), order.getOrderId());
+                    odao.setOrderStatus(order.getTableId());
+                }
+            }
+
+            String tableId_raw = request.getParameter("tableId");
+            String status = request.getParameter("status");
+            int tableId;
+            try {
+                tableId = Integer.parseInt(tableId_raw);
+                TableDAO tableDAO = new TableDAO();
+                tableDAO.setStatsus(tableId, status);
+            } catch (NumberFormatException e) {
+                System.out.println(e);
+            }
+
+            // Lưu tổng tiền và danh sách vào request để hiển thị trên trang JSP
+            request.setAttribute("totalAmount", totalAmount);
+            request.setAttribute("orderList", list);
+            request.getRequestDispatcher("bill.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("bill.jsp");
         }
+
     }
 
     /**
@@ -89,20 +122,7 @@ public class CashierManageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String orderId_raw = request.getParameter("orderId");
-        String dishId_raw = request.getParameter("dishId");
-        String tableId_raw = request.getParameter("tableId");
-        int dishId, orderId, tableId;
-        try {
-            dishId = Integer.parseInt(dishId_raw);
-            orderId = Integer.parseInt(orderId_raw);
-            tableId = Integer.parseInt(tableId_raw);
-            OrderDetailDAO oddao = new OrderDetailDAO();
-            oddao.confirm(dishId, orderId);
-            response.sendRedirect("manage?tableID=" + tableId);
-        } catch (NumberFormatException e) {
-            System.out.println(e);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -74,11 +74,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="row mt-4">
                 <div class="col-md-12 text-center">
-                    <a href="cashier" class="btn btn-outline-primary btn-lg">Back to Tables</a>
-                    <a href="#" class="btn btn-outline-primary btn-lg">Pay</a>
+                    <a href="cashier" class="btn btn-primary btn-lg">Back to Tables</a>
+                    <a href="tableManage?tableId=${param.tableID}&status=occupied" class="btn btn-danger btn-lg">Set Occupied</a>
+                    <a href="tableManage?tableId=${param.tableID}&status=available" class="btn btn-success btn-lg">Set Vacant</a>
+                    <a href="pay?tableId=${param.tableID}&status=available" class="btn btn-outline-primary btn-lg">Pay</a>
                 </div>
             </div>
         </div>
@@ -91,7 +92,7 @@
                 form.submit();
             }
         </script>
-        
+
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>

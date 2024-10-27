@@ -10,8 +10,6 @@ import model.OrderDetail;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import model.Order;
 
 /**
  *
@@ -59,6 +57,22 @@ public class OrderDetailDAO extends DBContext {
         String sql = """
                      update [OrderDetail]
                      set Status = 'Served'
+                     where DishID = ? and OrderID = ?
+                     """;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, dishId);
+            st.setInt(2, orderId);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void updateStatus(int dishId, int orderId) {
+        String sql = """
+                     update [OrderDetail]
+                     set Status = 'Not Served'
                      where DishID = ? and OrderID = ?
                      """;
         try {

@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/web/cashier.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/controller/Cashier.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/controller/PayServlet.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/dal/BillDAO.java</file>
             <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/controller/CashierManageServlet.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/dal/OrderDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/dal/TableDAO.java</file>
             <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/dal/OrderDetailDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/web/css/cashierManage.css</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/model/OrderDetail.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/web/bill.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/web/cashierManage.jsp</file>
         </group>
     </open-files>

@@ -40,13 +40,29 @@ public class TableDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Table tb = new Table(rs.getInt("TableID"), 
-                                  rs.getString("TableStatus"));
+                Table tb = new Table(rs.getInt("TableID"),
+                        rs.getString("TableStatus"));
                 list.add(tb);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
+    }
+
+    public void setStatsus(int tableId, String status) {
+        String sql = """
+                     UPDATE [dbo].[Table]
+                      SET   [TableStatus] = ?
+                      WHERE [TableID] = ?
+                     """;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, status);
+            st.setInt(2, tableId);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }
