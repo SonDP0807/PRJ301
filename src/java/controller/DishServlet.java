@@ -65,8 +65,8 @@ public class DishServlet extends HttpServlet {
         int tableId;
         try {
             /**
-             * neu truy cap bang cach nhap tableID thi se kiem tra xem ban do co
-             * trong hay khong de dua ra thong bao
+             * neu truy cap bang cach nhap tableID thi se kiem tra xem ban do co trong hay khong
+             * de dua ra thong bao
              */
             tableId = Integer.parseInt(tableID_raw);
             TableDAO tdao = new TableDAO();
@@ -81,14 +81,14 @@ public class DishServlet extends HttpServlet {
                 request.getRequestDispatcher("tableID.jsp").forward(request, response);
             }
         } catch (NumberFormatException e) {
-
-//            DishDAO dAO = new DishDAO();
-//            List<Dish> list = dAO.getAll();
-//            request.setAttribute("data", list);
-//            request.getRequestDispatcher("menu.jsp").forward(request, response);
-            String error = "Invalid Talbe ID";
-            request.setAttribute("error", error);
-            request.getRequestDispatcher("tableID.jsp").forward(request, response);
+            /**
+             * truy cap tu menu cua header file se ko co tableID nen chi tra ve danh sach mon an
+             * ma khong lam gi khac
+             */
+            DishDAO dAO = new DishDAO();
+            List<Dish> list = dAO.getAll();
+            request.setAttribute("data", list);
+            request.getRequestDispatcher("menu.jsp").forward(request, response);
         }
     }
 

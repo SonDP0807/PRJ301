@@ -84,12 +84,20 @@
                         <div class="buttons">
                             <button type="submit" class="btn btn-danger">Submit</button>
                         </div>
-                        <c:set var="e" value="${requestScope.error}"></c:set>
+                        <c:set var="e" value="${requestScope.error}">
+                        </c:set>
                         <p style="color: red">${e}</p>
                     </form>
                 </div>
             </div>
         </div>
         <%@include file="footer.jsp" %>
+        <%
+        // Kiểm tra nếu `tableID` đã được truyền vào
+        String tableID = request.getParameter("tableID");
+        if (tableID != null) {
+        session.setAttribute("tableID", tableID);
+    }
+        %>
     </body>
 </html>

@@ -50,19 +50,58 @@ public class TableDAO extends DBContext {
         return list;
     }
 
-    public void setStatsus(int tableId, String status) {
-        String sql = """
-                     UPDATE [dbo].[Table]
-                      SET   [TableStatus] = ?
-                      WHERE [TableID] = ?
-                     """;
+    public void insertTable(Table t) {
+        String sql = "INSERT INTO [dbo].[Table] (TableID, TableStatus) VALUES (?, ?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, status);
-            st.setInt(2, tableId);
+            st.setInt(1, t.getId());
+            st.setString(2, t.getStatus());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
+
+    public Table findTableById(int id) {
+        String sql = "SELECT * FROM [dbo].[Table] WHERE TableID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return new Table(
+                        rs.getInt(1),
+                        rs.getString(2)
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public void deleteTable(int id) {
+        String sql = "DELETE FROM [dbo].[Table] WHERE TableID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            int affectedRows = st.executeUpdate();
+            System.out.println("Deleted " + affectedRows + " row(s)");
+        } catch (SQLException e) {
+            System.out.println("Error while deleting table: " + e.getMessage());
+        }
+    }
+
+    public void updateTable(Table t) {
+        String sql = "UPDATE [dbo].[Table] SET TableStatus = ? WHERE TableID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, t.getStatus());
+            st.setInt(2, t.getId());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
 }

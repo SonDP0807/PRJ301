@@ -1,0 +1,63 @@
+/* admin.css */
+
+/* Đặt kiểu cho body */
+body {
+    font-family: Arial, sans-serif; /* Font chữ */
+    background-color: #f8f9fa; /* Màu nền nhạt */
+    margin: 0; /* Xóa margin mặc định */
+    padding: 0; /* Xóa padding mặc định */
+}
+
+/* Đặt kiểu cho tiêu đề */
+h1 {
+    text-align: center; /* Căn giữa tiêu đề */
+    margin-top: 20px; /* Khoảng cách phía trên tiêu đề */
+    font-size: 36px; /* Kích thước chữ */
+    color: red; /* Màu chữ đỏ */
+}
+
+/* Đặt kiểu cho các liên kết */
+a.nav-link {
+    font-size: 25px; /* Kích thước chữ cho liên kết Log Out */
+    font-weight: 500; /* Độ đậm chữ */
+    color: #FF416C; /* Màu chữ */
+    text-decoration: none; /* Xóa gạch chân */
+    display: block; /* Đặt thành khối */
+    text-align: center; /* Căn giữa */
+    margin: 20px 0; /* Khoảng cách giữa các liên kết */
+}
+
+/* Đặt hiệu ứng hover cho liên kết */
+a.nav-link:hover {
+    text-decoration: underline; /* Gạch chân khi di chuột */
+}
+
+/* Đặt kiểu cho navbar */
+.navbar {
+    margin: 20px 0; /* Khoảng cách trên và dưới cho navbar */
+    text-align: center; /* Căn giữa nội dung navbar */
+}
+
+/* Đặt kiểu cho danh sách trong navbar */
+.navbar ul {
+    list-style-type: none; /* Xóa dấu chấm */
+    padding: 0; /* Xóa padding mặc định */
+}
+
+/* Đặt kiểu cho các mục trong navbar */
+.navbar ul li {
+    display: inline; /* Hiển thị các mục trong cùng một hàng */
+    margin: 0 15px; /* Khoảng cách giữa các mục */
+}
+
+/* Đặt kiểu cho các liên kết trong navbar */
+.navbar ul li a {
+    color: #FF416C; /* Màu chữ cho liên kết trong navbar */
+    font-size: 20px; /* Kích thước chữ */
+    text-decoration: none; /* Xóa gạch chân */
+}
+
+/* Đặt hiệu ứng hover cho các liên kết trong navbar */
+.navbar ul li a:hover {
+    text-decoration: underline; /* Gạch chân khi di chuột */
+}

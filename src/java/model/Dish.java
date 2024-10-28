@@ -4,68 +4,72 @@
  */
 package model;
 
-
 /**
  *
- * @author ADMIN
+ * @author Acer
  */
 public class Dish {
-    private int DishID;
-    private String DishName;
-    private int Price;
-    private String Status;
-    private String ImageLink;
+    private int dishId;
+    private String dishName;
+    private double price;
+    private String status;
+    private String image; 
 
     public Dish() {
     }
 
-    public Dish(int DishID, String DishName, int Price, String Status, String ImageLink) {
-        this.DishID = DishID;
-        this.DishName = DishName;
-        this.Price = Price;
-        this.Status = Status;
-        this.ImageLink = ImageLink;
+    public Dish(int dishId, String dishName, double price, String status, String image) {
+        this.dishId = dishId;
+        this.dishName = dishName;
+        this.price = price;
+        this.status = status;
+        this.image = image;
     }
 
-    public int getDishID() {
-        return DishID;
+    
+
+    public int getDishId() {
+        return dishId;
     }
 
-    public void setDishID(int DishID) {
-        this.DishID = DishID;
+    public void setDishId(int dishId) {
+        this.dishId = dishId;
     }
 
     public String getDishName() {
-        return DishName;
+        return dishName;
     }
 
-    public void setDishName(String DishName) {
-        this.DishName = DishName;
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
     }
 
-    public int getPrice() {
-        return Price;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPrice(int Price) {
-        this.Price = Price;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
-    public void setStatus(String Status) {
-        this.Status = Status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getImageLink() {
-        return ImageLink;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageLink(String ImageLink) {
-        this.ImageLink = ImageLink;
+    public void setImage(String image) {
+        this.image = image;
     }
+
     
+    
+
     
 }

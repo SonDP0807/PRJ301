@@ -17,7 +17,7 @@
                 margin-right: 60px;
             }
         </style>
-        <title>JSP Page</title>
+        
     </head>
     <body>
         <!-- Navigation bar -->
@@ -32,6 +32,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
+                    
                 </button>
 
                 <!-- Navigation links -->
@@ -39,9 +40,14 @@
                     <ul class="navbar-nav">
                         <!-- 'Menu' link -->
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="dish"
+                            <a class="nav-link active" aria-current="page" href="dish?tableID=${sessionScope.tableID}"
                                style="font-size: 25px; font-weight: 500;">Menu</a>
                         </li>
+                         <form class="d-flex search-bar" action="searchDish" method="get">
+                            <input class="form-control me-2" type="search" placeholder="Tìm kiếm món ăn" aria-label="Search" name="query">
+                            <button class="btn btn-outline-light" type="submit">Tìm kiếm</button>
+                        </form>
+
                         <!-- 'Order' link -->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current='page'href="order.jsp" 
@@ -55,5 +61,9 @@
                 </div>
             </div>
         </nav>
+<!--            <%
+            String tableID = (String) session.getAttribute("tableID");
+            %> -->
+            
     </body>
 </html>

@@ -3,14 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/controller/PayServlet.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/dal/BillDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/controller/CashierManageServlet.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/dal/OrderDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/dal/TableDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/src/java/dal/OrderDetailDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/web/bill.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/ProjectPRJ/web/cashierManage.jsp</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/admin.jsp</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/continue.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/createTable.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/src/java/controller/addAccountandStaff.java</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/src/java/controller/addDish.java</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/list.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/style.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/listStaff.jsp</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/menu.jsp</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/listDish.jsp</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/cashier.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/createDish.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/src/java/controller/LoginServlet.java</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/search.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/addStaff.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/tableID.jsp</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/header.jsp</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/searchDish.jsp</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/src/java/dal/AccountDAO.java</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/src/java/dal/StaffDAO.java</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/src/java/controller/searchDish.java</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/web/css/admin.css</file>
+            <file>file:/D:/Project-PRJ/PRJ301-master/src/java/dal/DishDAO.java</file>
         </group>
     </open-files>
 </project-private>

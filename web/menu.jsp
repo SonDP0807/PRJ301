@@ -55,11 +55,11 @@
         <div class="container mt-4">
             <div class="row" id="menu-items">
                 <c:forEach items="${requestScope.data}" var="i">
-                    <c:set var="id" value="${i.dishID}"></c:set>
+                    <c:set var="id" value="${i.dishId}"></c:set>
                     <c:set var="name" value="${i.dishName}"></c:set>
                     <c:set var="price" value="${i.price}"></c:set>
                     <c:set var="status" value="${i.status}"></c:set>
-                    <c:set var="imageLink" value="${i.imageLink}"></c:set>
+                    <c:set var="imageLink" value="${i.image}"></c:set>
                         <!--Menu Item--> 
                         <div class="col-md-4 menu-item">
                             <img src="${imageLink}"
@@ -72,7 +72,14 @@
                 <!-- Add more menu items similarly -->
             </div>
         </div>
+        <%
+        
 
+       // Lưu tableID vào session để sử dụng trên các trang khác
+        if (tableID != null) {
+        session.setAttribute("tableID", tableID);
+        }
+        %>
         <!--footer-->
         <%@include file="footer.jsp" %>
         <script src="js/order.js"></script>
